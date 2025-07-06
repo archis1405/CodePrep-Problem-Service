@@ -16,27 +16,43 @@ function addProblem(req , res , next){
 }
 
 function getProblem(req , res , next){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not Implemented'
-    });
+    try{
+        //Not implemented 
+        throw new NotImplemented('addProblem');
+   }
+   catch(error){
+        next(error);
+   }
 }
 
 function getAllProblems(req , res , next){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not Implemented'
-    });
+    try{
+        //Not implemented 
+        throw new NotImplemented('addProblem');
+   }
+   catch(error){
+        next(error);
+   }
 }
 
 function updateProblem(req , res , next){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not Implemented'
-    });
+    try{
+        //Not implemented 
+        throw new NotImplemented('addProblem');
+   }
+   catch(error){
+        next(error);
+   }
 }
 
 function deleteProblem(req , res , next){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not Implemented'
-    });
+    try{
+        //Not implemented 
+        throw new NotImplemented('addProblem');
+   }
+   catch(error){
+        next(error);
+   }
 }
 
 module.exports = {
