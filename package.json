@@ -1,0 +1,26 @@
+{
+  "name": "codeprep-problem-service",
+  "version": "1.0.0",
+  "description": "This is a Admin Service",
+  "homepage": "https://github.com/archis1405/CodePrep-Problem-Service#readme",
+  "bugs": {
+    "url": "https://github.com/archis1405/CodePrep-Problem-Service/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archis1405/CodePrep-Problem-Service.git"
+  },
+  "license": "ISC",
+  "author": "Archis1405",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
