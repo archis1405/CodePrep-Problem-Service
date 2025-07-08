@@ -1,4 +1,6 @@
+const NotFound = require('../errors/notfound.error');
 const { Problem } = require('../models');
+const mongoose = require('mongoose');
 
 class ProblemRepository{
     async createProblem(problemData){
@@ -32,6 +34,25 @@ class ProblemRepository{
         }
     }
     
+    async getProblem(id) {
+        try {
+           
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                throw new NotFound("Problem", id);
+            }
+
+            const problem = await Problem.findById(id);
+
+            if (!problem) {
+                throw new NotFound("Problem", id);
+            }
+
+            return problem;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 }
 
 module.exports = ProblemRepository;
