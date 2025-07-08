@@ -72,7 +72,30 @@ class ProblemRepository{
             throw error;
         }
     }
-    
+
+    async updateProblem(id, updateData) {
+        try {
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                throw new NotFound("Problem", id);
+            }
+
+            const updatedProblem = await Problem.findByIdAndUpdate(
+                id, 
+                updateData, 
+                { new: true, runValidators: true }
+            );
+
+            if (!updatedProblem) {
+                throw new NotFound("Problem", id);
+            }
+
+            return updatedProblem;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
+
 }
 
 module.exports = ProblemRepository;

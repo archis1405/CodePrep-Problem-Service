@@ -42,6 +42,21 @@ class ProblemService{
             
     }
 
+    async updateProblem(problemId, updateData){
+            
+            // Sanitize description if it's being updated
+            if (updateData.description) {
+                updateData.description = sanitizeMarkdownContent(updateData.description);
+            }
+
+            console.log("Update Data", updateData);
+            const updatedProblem = await this.problemRepository.updateProblem(problemId, updateData);
+            
+            console.log("Problem Updated", updatedProblem);
+            return updatedProblem;
+            
+    }
+
 }
 
 module.exports = ProblemService;

@@ -89,6 +89,27 @@ async function deleteProblem(req , res , next){
    }
 }
 
+async function deleteProblem(req , res , next){
+    try{
+        const deletedProblem = await problemService.deleteProblem(req.params.id);
+        
+        return res.status(StatusCodes.OK).json({
+          success: true,
+          message: 'Successfully deleted',
+          error: {},
+          data: req.params.id
+        })
+   }
+   catch(error){
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+          success: false,
+          message: 'cannot delete the problem',
+          error: error,
+          data: req.params.id
+        })
+   }
+}
+
 module.exports = {
     addProblem,
     getProblem,
