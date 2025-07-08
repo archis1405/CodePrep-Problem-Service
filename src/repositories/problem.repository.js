@@ -53,6 +53,26 @@ class ProblemRepository{
             throw error;
         }
     }
+
+    async deleteProblem(id) {
+        try {
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                throw new NotFound("Problem", id);
+            }
+
+            const problem = await Problem.findByIdAndDelete(id);
+
+            if (!problem) {
+                throw new NotFound("Problem", id);
+            }
+
+            return problem;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
+    
 }
 
 module.exports = ProblemRepository;

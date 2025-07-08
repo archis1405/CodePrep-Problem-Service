@@ -68,13 +68,24 @@ function updateProblem(req , res , next){
    }
 }
 
-function deleteProblem(req , res , next){
+async function deleteProblem(req , res , next){
     try{
-        //Not implemented 
-        throw new NotImplemented('addProblem');
+        const deletedProblem = await problemService.deleteProblem(req.params.id);
+        
+        return res.status(StatusCodes.OK).json({
+          success: true,
+          message: 'Successfully deleted',
+          error: {},
+          data: req.params.id
+        })
    }
    catch(error){
-        next(error);
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+          success: false,
+          message: 'cannot delete the problem',
+          error: error,
+          data: req.params.id
+        })
    }
 }
 

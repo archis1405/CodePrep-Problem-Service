@@ -9,7 +9,7 @@ class ProblemService{
 
     async createProblem(problemData){
        
-            //1. Sanitize the Markdown for the Description
+            
             problemData.description = sanitizeMarkdownContent(problemData.description);
 
             console.log("Problem Data",problemData);
@@ -32,6 +32,13 @@ class ProblemService{
             
             const problems = await this.problemRepository.getProblem(problemId);
             return problems;
+            
+    }
+
+    async deleteProblem(problemId){
+            
+            const problem = await this.problemRepository.deleteProblem(problemId);
+            return problem;
             
     }
 
