@@ -1,3 +1,4 @@
+const { Problem } = require("../models");
 const sanitizeMarkdownContent = require("../utils/markdownSanitizer");
 
 class ProblemService{
@@ -7,7 +8,7 @@ class ProblemService{
     }
 
     async createProblem(problemData){
-       try {
+       
             //1. Sanitize the Markdown for the Description
             problemData.description = sanitizeMarkdownContent(problemData.description);
 
@@ -17,13 +18,17 @@ class ProblemService{
             console.log("Problem Created",problem);
 
             return problem;
-       } 
-
-       catch (error){
-            console.log(error);
-            throw error;
-       }
+       
     }
+
+    async getAllProblems(){
+            
+            const problems = await this.problemRepository.getAllProblems();
+            return problems;
+    }
+
+    
+
 }
 
 module.exports = ProblemService;
