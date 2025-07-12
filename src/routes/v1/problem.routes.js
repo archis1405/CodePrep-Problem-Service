@@ -11,11 +11,8 @@ problemRouter.get('/', problemController.getAllProblems);
 
 problemRouter.post('/', problemController.addProblem);
 
-problemRouter.put('/:id', problemController.updateProblem);
+problemRouter.patch('/:id', problemController.updateProblem);
 
 problemRouter.delete('/:id', problemController.deleteProblem);
-
-
-
 
 module.exports = problemRouter;
