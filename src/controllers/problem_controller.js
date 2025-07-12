@@ -101,7 +101,7 @@ async function deleteProblem(req , res , next){
         })
    }
    catch(error){
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        return res.status(StatusCodes.NOT_FOUND).json({
           success: false,
           message: 'cannot delete the problem',
           error: error,
