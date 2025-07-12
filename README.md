@@ -7,3 +7,6 @@
         as the route starts with /api
         apiRouter -> v1Router -> problemRouter -> problemController -> service layer
         /api      -> /v1      -> /problems     -> /ping 
+
+## Logs
+    Added Logging of Errors in the MongoDB using Winston

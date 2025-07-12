@@ -1,3 +1,4 @@
+const logger = require('../config/logger.config');
 const NotFound = require('../errors/notfound.error');
 const { Problem } = require('../models');
 const mongoose = require('mongoose');
@@ -56,13 +57,12 @@ class ProblemRepository{
 
     async deleteProblem(id) {
         try {
-            if (!mongoose.Types.ObjectId.isValid(id)) {
-                throw new NotFound("Problem", id);
-            }
+            
 
             const problem = await Problem.findByIdAndDelete(id);
 
             if (!problem) {
+                 logger.error(`Problem with id : ${id} not found in the DB`)
                 throw new NotFound("Problem", id);
             }
 
@@ -86,12 +86,13 @@ class ProblemRepository{
             );
 
             if (!updatedProblem) {
+                logger.error(`Problem with id : ${id} not found in the DB`)
                 throw new NotFound("Problem", id);
             }
 
             return updatedProblem;
         } catch (error) {
-            console.log(error);
+             logger.error(`deleteProblem error: ${error.message}`);
             throw error;
         }
     }
