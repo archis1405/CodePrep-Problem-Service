@@ -32,15 +32,17 @@ const problemSchema = new mongoose.Schema({
         {
             language: {
                 type: String,
-                required: true
+                enum:['JAVA' , 'CPP' , 'PYTHON'],
+                required: [true , 'Language cannot be empty']
             },
             startSnipper: {
-                type: String,
-                required: true
+                type: String
             },
             endSnippet: {
-                type: String,
-                required: true
+                type: String
+            },
+            userSnippet: {
+                type: String
             }
         }
     ],
